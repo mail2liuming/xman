@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UICKeyChainStore.h"
+#import "User.h"
+#import<MapKit/MapKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic) CLLocation* curLocation;
 
+-(bool)checkUserLogin;
+-(UICKeyChainStore*)getAppChainStore;
+
+-(void) saveLoginUser :(User* )aUser;
 
 @end
 

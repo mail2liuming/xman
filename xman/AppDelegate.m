@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "User.h"
+
+@import Firebase;
 
 @interface AppDelegate ()
+
+@property(nonatomic,strong) User* curUser;
 
 @end
 
@@ -17,7 +22,34 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.curUser = [self loadExistingUser];
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor whiteColor];
+    
+    [self startSignificantChangeUpdates];
+    
+    [FIRApp configure];
+    
     return YES;
+}
+
+- (void)startSignificantChangeUpdates
+{
+    // Create the location manager if this object does not
+    // already have one.
+    
+    CLLocationManager* locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [locationManager startMonitoringSignificantLocationChanges];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    // If it's a relatively recent event, turn off updates to save power.
+    self.curLocation = [locations lastObject];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -40,6 +72,44 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(UICKeyChainStore *)getAppChainStore
+{
+    return [UICKeyChainStore keyChainStoreWithService:@"com.mojo.Mojo-Coffee"];
+}
+
+-(User *) loadExistingUser{
+    
+    UICKeyChainStore *store = [self getAppChainStore];
+    
+    User *user = [[User alloc] init];
+    
+    user.ID =  [store stringForKey:USER_ID];
+    user.account_num = [store stringForKey:USER_NUMBER];
+    user.password = [store stringForKey:USER_PASSWORD];
+    
+    if(user.account_num !=nil && user.ID != nil){
+        return user;
+    }
+    return nil;
+}
+
+-(void) saveLoginUser :(User* )aUser{
+    UICKeyChainStore *store = [self getAppChainStore];
+    
+    if(aUser.account_num !=nil && aUser.ID != nil){
+        [store setString:aUser.ID forKey:USER_ID];
+        [store setString:aUser.account_num forKey:USER_NUMBER];
+        [store setString:aUser.password forKey:USER_PASSWORD];
+        
+        self.curUser = aUser;
+    }
+}
+
+-(bool)checkUserLogin{
+//    return (self.curUser!=nil);
+    return true;
 }
 
 @end

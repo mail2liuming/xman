@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NewAdDetailFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="gQ7-PN-lqp">
+                    <rect key="frame" x="8" y="8" width="455" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="nli-ru-2b5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFm-8A-J8e">
+                    <rect key="frame" x="477" y="8" width="39" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="PXQ-Cz-l4i"/>
+                        <constraint firstAttribute="width" constant="39" id="fRg-62-rcZ"/>
+                    </constraints>
+                    <state key="normal" image="AdCallBtn"/>
+                    <connections>
+                        <action selector="callAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="thR-CY-6ri"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gU-QM-zwp">
+                    <rect key="frame" x="545" y="8" width="39" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="39" id="ca1-rs-aky"/>
+                        <constraint firstAttribute="height" constant="39" id="eYm-sI-xyQ"/>
+                    </constraints>
+                    <state key="normal" image="AdMessage"/>
+                    <connections>
+                        <action selector="smsAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="XlO-ai-Ly9"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0d-q7-7Mp">
+                    <rect key="frame" x="12" y="59" width="576" height="35"/>
+                    <color key="backgroundColor" red="0.52549019607843139" green="0.69411764705882351" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="R2c-A0-wyF"/>
+                    </constraints>
+                    <state key="normal" title="Edit">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="funcAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="8wt-qG-LCq"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7gU-QM-zwp" firstAttribute="leading" secondItem="mFm-8A-J8e" secondAttribute="trailing" constant="29" id="6pB-uD-L7I"/>
+                <constraint firstAttribute="trailing" secondItem="7gU-QM-zwp" secondAttribute="trailing" constant="16" id="BTg-U2-3Lc"/>
+                <constraint firstAttribute="trailing" secondItem="a0d-q7-7Mp" secondAttribute="trailing" constant="12" id="C5S-Oj-Nia"/>
+                <constraint firstItem="mFm-8A-J8e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="E6O-AU-vtQ"/>
+                <constraint firstItem="7gU-QM-zwp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Ksx-yN-ZH7"/>
+                <constraint firstItem="gQ7-PN-lqp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="VZH-oV-lLl"/>
+                <constraint firstItem="gQ7-PN-lqp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="nc0-nd-OJv"/>
+                <constraint firstItem="mFm-8A-J8e" firstAttribute="leading" secondItem="gQ7-PN-lqp" secondAttribute="trailing" constant="14" id="qLh-ek-ua1"/>
+                <constraint firstItem="a0d-q7-7Mp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="sSo-ws-cgb"/>
+                <constraint firstItem="a0d-q7-7Mp" firstAttribute="top" secondItem="7gU-QM-zwp" secondAttribute="bottom" constant="12" id="xHq-bV-Th3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="contactLb" destination="gQ7-PN-lqp" id="9kl-Mc-c7n"/>
+                <outlet property="funcBtn" destination="a0d-q7-7Mp" id="auw-eX-bds"/>
+            </connections>
+            <point key="canvasLocation" x="343" y="464"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AdCallBtn" width="39" height="39"/>
+        <image name="AdMessage" width="39" height="39"/>
+    </resources>
+</document>

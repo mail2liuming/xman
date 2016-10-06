@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HomeSellingListView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DE9-jT-b7z">
+                    <rect key="frame" x="512" y="85" width="74" height="29"/>
+                    <color key="backgroundColor" red="0.59607843137254901" green="0.80000000000000004" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="JUI-0h-c6V"/>
+                        <constraint firstAttribute="width" constant="74" id="df8-ZG-sbO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Add">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addNewAdAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dEB-rg-d9t"/>
+                    </connections>
+                </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9BN-pD-ehf">
+                    <rect key="frame" x="8" y="86" width="496" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="io7-ga-5hg"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Current"/>
+                        <segment title="Expired"/>
+                        <segment title="Withdrawn"/>
+                    </segments>
+                    <color key="tintColor" red="0.27058823529999998" green="0.61960784310000006" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qvf-2h-uCC">
+                    <rect key="frame" x="0.0" y="127" width="600" height="473"/>
+                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIa-Lq-6g7">
+                    <rect key="frame" x="257" y="244" width="87" height="112"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AddCurrentSelling" translatesAutoresizingMaskIntoConstraints="NO" id="Ff2-3z-NJE">
+                            <rect key="frame" x="0.0" y="25" width="87" height="87"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="start selling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4Y-xC-2hX">
+                            <rect key="frame" x="0.0" y="0.0" width="87" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rom-F7-Xmw">
+                            <rect key="frame" x="0.0" y="-4" width="87" height="116"/>
+                            <connections>
+                                <action selector="gotoAddSellingAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dQV-YP-GbR"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="112" id="hZA-7K-MGW"/>
+                        <constraint firstAttribute="width" constant="87" id="niS-Tq-w8V"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qvf-2h-uCC" secondAttribute="trailing" id="5R9-uK-VWk"/>
+                <constraint firstItem="DE9-jT-b7z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="85" id="7PR-kg-zsv"/>
+                <constraint firstItem="LIa-Lq-6g7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="L4n-jg-5DX"/>
+                <constraint firstItem="DE9-jT-b7z" firstAttribute="leading" secondItem="9BN-pD-ehf" secondAttribute="trailing" constant="8" id="TLY-sh-EiR"/>
+                <constraint firstItem="qvf-2h-uCC" firstAttribute="top" secondItem="9BN-pD-ehf" secondAttribute="bottom" constant="13" id="XdL-pI-WW6"/>
+                <constraint firstItem="qvf-2h-uCC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="chi-tx-OOG"/>
+                <constraint firstItem="LIa-Lq-6g7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eXo-PK-YIG"/>
+                <constraint firstItem="9BN-pD-ehf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="fBF-zK-eXy"/>
+                <constraint firstItem="9BN-pD-ehf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="86" id="fmd-Wz-QBa"/>
+                <constraint firstAttribute="trailing" secondItem="DE9-jT-b7z" secondAttribute="trailing" constant="14" id="g8p-jN-3Rg"/>
+                <constraint firstAttribute="bottom" secondItem="qvf-2h-uCC" secondAttribute="bottom" id="jug-f2-TpJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="addBtn" destination="DE9-jT-b7z" id="vFc-Fy-a8Y"/>
+                <outlet property="addSellingView" destination="LIa-Lq-6g7" id="gDv-jt-T9e"/>
+                <outlet property="switchControl" destination="9BN-pD-ehf" id="cH1-Zg-R8l"/>
+                <outlet property="table" destination="qvf-2h-uCC" id="g9g-ZV-yHk"/>
+            </connections>
+            <point key="canvasLocation" x="363" y="330"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AddCurrentSelling" width="87" height="87"/>
+    </resources>
+</document>

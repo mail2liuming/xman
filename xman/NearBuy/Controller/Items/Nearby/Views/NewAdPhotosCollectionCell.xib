@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="91" id="KGk-i7-Jjw" customClass="NewAdPhotosCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="113.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBV-3f-j3C">
+                        <rect key="frame" x="8" y="2" width="299" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="gZe-Ow-uZ8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Jcj-yc-9t7">
+                        <rect key="frame" x="8" y="26" width="312" height="87.5"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fm2-ux-z7N">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tBV-3f-j3C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="0tV-wZ-PWl"/>
+                    <constraint firstAttribute="trailing" secondItem="Jcj-yc-9t7" secondAttribute="trailing" id="2Jl-sD-eh3"/>
+                    <constraint firstItem="Jcj-yc-9t7" firstAttribute="top" secondItem="tBV-3f-j3C" secondAttribute="bottom" constant="3" id="83p-Vq-jH0"/>
+                    <constraint firstAttribute="trailing" secondItem="tBV-3f-j3C" secondAttribute="trailing" constant="13" id="C5B-YP-EfS"/>
+                    <constraint firstItem="tBV-3f-j3C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Dgs-Aw-xqI"/>
+                    <constraint firstItem="Jcj-yc-9t7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="J0U-vS-Gcj"/>
+                    <constraint firstAttribute="bottom" secondItem="Jcj-yc-9t7" secondAttribute="bottom" constant="0.5" id="T9b-9C-564"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="collectionView" destination="Jcj-yc-9t7" id="3W2-sn-uBp"/>
+            </connections>
+            <point key="canvasLocation" x="301" y="380"/>
+        </tableViewCell>
+    </objects>
+</document>
