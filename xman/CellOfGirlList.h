@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 
--(void) attachMemberInfo: (NSDictionary*)member;
+-(void) attachMemberInfo: (Member*)member;
 @end

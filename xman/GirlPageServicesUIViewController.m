@@ -43,6 +43,12 @@ static const int MAX_OPTIONS_SHOWN=3;
     [self.serviceTextField becomeFirstResponder];
 }
 
+-(void)attachContent{
+    self.options = [[NSMutableArray alloc]init];
+    [self.options addObjectsFromArray:self.member.options];
+    [self showOptions];
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.member.options = self.options;
@@ -75,6 +81,10 @@ static const int MAX_OPTIONS_SHOWN=3;
 //    NSString* option =[NSString stringWithFormat:@"option %d ",++optionCount];
     [self.options addObject:option];
     
+    [self showOptions];
+}
+    
+-(void)showOptions{
     int count = (self.options.count > MAX_OPTIONS_SHOWN)?MAX_OPTIONS_SHOWN:(int)self.options.count;
     int offset =(self.options.count > MAX_OPTIONS_SHOWN)?(int)(self.options.count - MAX_OPTIONS_SHOWN):0;
     for(int i=0;i<self.optionViews.count;i++){
@@ -89,5 +99,6 @@ static const int MAX_OPTIONS_SHOWN=3;
         [self.view addSubview:optionView];
     }
 }
+
 
 @end

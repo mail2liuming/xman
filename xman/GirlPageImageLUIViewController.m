@@ -39,6 +39,7 @@
     self.dummyWrapper.imageUrl=nil;
     
     self.imageUrlList = [[NSMutableArray alloc]init];
+    [self.imageUrlList addObjectsFromArray:self.member.pics];
 }
 
 

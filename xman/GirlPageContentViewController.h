@@ -16,4 +16,6 @@
 @property(nonatomic,strong) Member* member;
 @property(nonatomic,strong) id<GirlPageDelegate> pageDelegate;
 
+-(void)attachContent;
+
 @end

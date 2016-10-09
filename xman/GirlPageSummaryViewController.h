@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseUIViewController.h"
 #import "Member.h"
 #import "GirlPageDelegate.h"
 
-@interface GirlPageSummaryViewController : UIViewController
+@interface GirlPageSummaryViewController : BaseUIViewController
 
 @property(nonatomic,assign) int pageIndex;
 @property(nonatomic,strong) Member* member;

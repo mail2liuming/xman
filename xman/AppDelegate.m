@@ -76,7 +76,7 @@
 
 -(UICKeyChainStore *)getAppChainStore
 {
-    return [UICKeyChainStore keyChainStoreWithService:@"com.mojo.Mojo-Coffee"];
+    return [UICKeyChainStore keyChainStoreWithService:@"com.newworld.xman.xman"];
 }
 
 -(User *) loadExistingUser{
@@ -90,6 +90,8 @@
     user.password = [store stringForKey:USER_PASSWORD];
     
     if(user.account_num !=nil && user.ID != nil){
+//        [[FIRAuth auth] signInWithEmail:user. password:<#(nonnull NSString *)#> completion:<#^(FIRUser * _Nullable user, NSError * _Nullable error)completion#>
+//        
         return user;
     }
     return nil;
@@ -103,13 +105,21 @@
         [store setString:aUser.account_num forKey:USER_NUMBER];
         [store setString:aUser.password forKey:USER_PASSWORD];
         
+        [store synchronize];
         self.curUser = aUser;
     }
 }
 
 -(bool)checkUserLogin{
-//    return (self.curUser!=nil);
-    return true;
+    return (self.curUser!=nil);
+//    return true;
+}
+
+-(NSString*)getUserID{
+    if(self.curUser){
+        return self.curUser.ID;
+    }
+    return nil;
 }
 
 @end

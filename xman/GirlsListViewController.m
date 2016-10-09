@@ -8,6 +8,7 @@
 
 #import "GirlsListViewController.h"
 #import "CellOfGirlList.h"
+#import "Member.h"
 @import Firebase;
 
 #import "AddNewGirlViewController.h"
@@ -15,8 +16,8 @@
 @interface GirlsListViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *girlsListView;
-@property NSArray* girls;
-@property NSDictionary* curGirl;
+@property NSMutableArray* girls;
+@property Member* curGirl;
 
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 @property (nonatomic) FIRDatabaseHandle refHandle;
@@ -26,18 +27,31 @@
 @implementation GirlsListViewController
 
 -(void)dealloc{
-    [[self.ref child:@"members"]removeObserverWithHandle:self.refHandle];
+    NSString* id = [self.appDelegate getUserID];
+    [[[self.ref child:id] child:@"members"] removeObserverWithHandle:self.refHandle];
 }
 
 -(void)configDatabase{
     self.ref = [[FIRDatabase database]reference];
-    self.refHandle = [[self.ref child:@"members"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        self.girls = snapshot.value;
+    NSString* id = [self.appDelegate getUserID];
+    self.refHandle = [[[self.ref child:id] child:@"members"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        self.girls = [[NSMutableArray alloc]init];
+        for(NSString*key in snapshot.value){
+            [self.girls addObject:[[Member alloc]initFromDictionary:snapshot.value[key] withUid:key]];
+        }
+//        NSObject *o = snapshot.value;
+//        if([o isMemberOfClass:[NSArray class]]){
+//            self.girls = snapshot.value;
+//        }else{
+//            self.girls = [NSArray arrayWithObject:snapshot.value];
+//        }
+        [self.tableView reloadData];
     }];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -47,6 +61,11 @@
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                               target:self action:@selector(addTapped:)];
     [self.navigationController setNavigationBarHidden:NO];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self configDatabase];
 }
 
@@ -66,17 +85,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if([self.girls isMemberOfClass:[NSArray class]]){
-        return [self.girls count];
-    }
-    return 0;
+//    if([self.girls isMemberOfClass:[NSMutableArray class]]){
+//        return [self.girls count];
+//    }
+//    return 0;
+    return [self.girls count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CellOfGirlList *cell = [tableView dequeueReusableCellWithIdentifier:@"CellForGirls" forIndexPath:indexPath];
+    CellOfGirlList *cell = [tableView dequeueReusableCellWithIdentifier:@"CellOfGirlList" forIndexPath:indexPath];
     if(cell == nil){
-        cell = [[CellOfGirlList alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellForGirls"];
+        cell = [[CellOfGirlList alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellOfGirlList"];
     }
     
     // Configure the cell...
@@ -135,7 +155,8 @@
     // Pass the selected object to the new view controller.
     AddNewGirlViewController* gvc = [segue destinationViewController];
     if(self.curGirl){
-        gvc.girl =[[Member alloc]initFromDictionary:self.curGirl];
+//        gvc.girl =[[Member alloc]initFromDictionary:self.curGirl];
+        gvc.girl = self.curGirl;
     }else{
         gvc.girl = nil;
     }

@@ -19,8 +19,8 @@
 }
 */
 
--(void)attachMemberInfo:(NSDictionary *)member{
-    [self.name setText:member[MemberFieldName]];
+-(void)attachMemberInfo:(Member *)member{
+    [self.name setText:member.name];
 }
 
 @end

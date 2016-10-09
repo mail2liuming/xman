@@ -39,7 +39,7 @@ extern NSString *const MemberFieldOptions;
 @property (nonatomic,strong)NSArray* pics;
 @property (nonatomic,strong)NSArray* options;
 
--(instancetype) initFromDictionary:(NSDictionary*) member;
+-(instancetype)initFromDictionary: (NSDictionary*) member withUid: (NSString*)uid;
 -(NSDictionary*) toDictionary;
 
 @end

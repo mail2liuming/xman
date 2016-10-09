@@ -43,10 +43,13 @@
         nav.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Submit" style:UIBarButtonItemStylePlain target:self action:@selector(submitInfo)];
     }
     self.ref = [[FIRDatabase database]reference];
+    
+    [self attachInfo];
 }
 
 
 -(void)attachInfo{
+    //TODO
     NSMutableArray *array = [[NSMutableArray alloc]init];
     [array addObject:@"==Bio\n"];
     [array addObject:@"Name:"];
@@ -73,10 +76,13 @@
 }
 
 -(void)submitInfo{
+    NSString* id = [self.appDelegate getUserID];
     if(self.member.uid == nil){
-        [[[self.ref child:@"members"] childByAutoId]setValue:self.member];
+        [[[[self.ref child:id] child:@"members"] childByAutoId]setValue:[self.member toDictionary]];
     }else{
-        [[[self.ref child:@"members"] child:self.member.uid] setValue:self.member];
+        [[[[self.ref child:id] child:@"members"]child:self.member.uid] setValue:[self.member toDictionary]];
     }
+    
+    [self.pageDelegate onCancel];
 }
 @end

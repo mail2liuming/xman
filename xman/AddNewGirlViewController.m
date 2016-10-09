@@ -32,8 +32,8 @@
     // Do any additional setup after loading the view.
     if(self.girl == nil){
         self.status = GIRGPAGE_STATUS_NORMAL;
-//        self.curPageIndex = 0;
-        self.curPageIndex = 11;
+        self.curPageIndex = 0;
+//        self.curPageIndex = 11;
         self.girl = [[Member alloc]init];
     }else{
         self.curPageIndex = MAX_PAGES_GIRLS-1;

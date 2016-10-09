@@ -21,5 +21,7 @@
 
 -(void) saveLoginUser :(User* )aUser;
 
+-(NSString*)getUserID;
+
 @end
 

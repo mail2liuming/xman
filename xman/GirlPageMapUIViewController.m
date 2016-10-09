@@ -58,6 +58,8 @@
     [self.postCodeView becomeFirstResponder];
 }
 
+-(void)attachContent{}
+
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     [self updateLocation];

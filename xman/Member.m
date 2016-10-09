@@ -23,10 +23,30 @@ NSString *const MemeberFieldAllowsms=@"allowsms";
 NSString *const MemberFieldPics=@"pics";
 NSString *const MemberFieldOptions=@"options";
 
--(instancetype)initFromDictionary: (NSDictionary*) member{
+-(instancetype)init{
     self = [super init];
     if(self){
-        self.uid = member[MemberFieldUid];
+        self.uid = nil;
+        self.name = @"eva";
+        self.birthday = @"1990";
+        self.height = @"170";
+        self.weight = @"100";
+        self.haircolor = @"red";
+        self.eyecolor = @"red";
+        self.size = @"38d";
+        self.phonenum = @"123456";
+        self.allowsms = @"yes";
+        self.pics = [[NSArray alloc]init];
+        self.options = [[NSArray alloc]init];
+    }
+    return self;
+}
+
+-(instancetype)initFromDictionary: (NSDictionary*) member withUid: (NSString*)uid{
+    self = [super init];
+    if(self){
+//        self.uid = member[MemberFieldUid];
+        self.uid = uid;
         self.name = member[MemberFieldName];
         self.birthday = member[MemberFieldBirthday];
         self.height = member[MemberFieldHeight];
@@ -43,9 +63,10 @@ NSString *const MemberFieldOptions=@"options";
 }
 
 -(NSDictionary*) toDictionary{
+    NSMutableDictionary* girl = [[NSMutableDictionary alloc]init];
     NSMutableDictionary* member = [[NSMutableDictionary alloc]init];
     
-    member[MemberFieldUid]=self.uid;
+//    member[MemberFieldUid]=self.uid;
     member[MemberFieldName]=self.name;
     member[MemberFieldBirthday]=self.birthday;
     member[MemberFieldHeight]=self.height ;
@@ -58,7 +79,9 @@ NSString *const MemberFieldOptions=@"options";
     member[MemberFieldPics]=self.pics;
     member[MemberFieldOptions]=self.options ;
     
-    return member;
+    girl[self.uid]=member;
+    
+    return girl;
 }
 
 

@@ -31,6 +31,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.pageContent becomeFirstResponder];
+    
+    [self attachContent];
+}
+
+-(void)attachContent{
+    NSString* index = GIRLS_TAGS_CONST[self.pageIndex];
+    [self.pageContent setText:[self.member valueForKey:index]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
