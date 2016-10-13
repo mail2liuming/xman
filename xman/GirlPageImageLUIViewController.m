@@ -121,6 +121,11 @@
     // assets contains PHAsset objects.
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(135,140,50,50)];
+    spinner.color = [UIColor blueColor];
+    [spinner startAnimating];
+    
+    
     [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         PHAsset *asset = obj;
         
@@ -131,6 +136,7 @@
                                        NSString *filePath = [NSString stringWithFormat:@"%@/%lld",
                                                              [FIRAuth auth].currentUser.uid,
                                                              (long long)([[NSDate date] timeIntervalSince1970] * 1000.0)];
+                                       [self.view addSubview:spinner];
                                        [[_storageRef child:filePath]
                                         putFile:imageFile metadata:nil
                                         completion:^(FIRStorageMetadata *metadata, NSError *error) {
@@ -144,6 +150,7 @@
                                             NSLog(@"add new index %d",wrapper.index);
                                             [self.imageUrlList addObject:wrapper];
                                             [self.collectionView reloadData];
+                                            [spinner removeFromSuperview];
                                         }
                                         ];
                                    }];
