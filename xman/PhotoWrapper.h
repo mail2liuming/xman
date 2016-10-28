@@ -13,5 +13,10 @@
 @property (nonatomic) int type;
 @property (nonatomic) int index;
 @property (nonatomic,strong) NSString* imageUrl;
+@property (nonatomic,strong)NSString* localImageUrl;
+@property (nonatomic,strong)NSString* showImageUrl;
+
++(NSArray*) toUrlArray:(NSArray*)array;
++(NSArray*) fromUrlArray:(NSArray*)array;
 
 @end

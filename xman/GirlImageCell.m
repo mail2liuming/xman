@@ -33,9 +33,13 @@
     }
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    
+    UITapGestureRecognizer *deleteTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onDelectClick)];
     singleTap.numberOfTapsRequired = 1;
     [self.MemberImage setUserInteractionEnabled:YES];
     [self.MemberImage addGestureRecognizer:singleTap];
+    [self.deleteImage setUserInteractionEnabled:YES];
+    [self.deleteImage addGestureRecognizer:deleteTap];
 }
 
 -(void)tapDetected{

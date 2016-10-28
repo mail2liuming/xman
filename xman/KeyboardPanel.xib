@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,40 +8,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KeyboardPanel">
-            <rect key="frame" x="0.0" y="0.0" width="569" height="55"/>
+            <rect key="frame" x="0.0" y="0.0" width="569" height="69"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xn5-Dw-MwR">
-                    <rect key="frame" x="14" y="13" width="34" height="30"/>
+                    <rect key="frame" x="8" y="0.0" width="64" height="69"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="34" id="ltd-ZF-oZJ"/>
+                        <constraint firstAttribute="width" constant="64" id="ltd-ZF-oZJ"/>
                     </constraints>
                     <state key="normal" title="Back"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf6-PU-zqc">
-                    <rect key="frame" x="478" y="13" width="76" height="30"/>
+                    <rect key="frame" x="449" y="1" width="112" height="68"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="76" id="Wz0-01-Ybr"/>
+                        <constraint firstAttribute="width" constant="112" id="Wz0-01-Ybr"/>
                     </constraints>
                     <state key="normal" title="Next"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ho-WL-KiC">
-                    <rect key="frame" x="118" y="13" width="305" height="30"/>
+                    <rect key="frame" x="119" y="6" width="305" height="57"/>
                     <state key="normal" title="Middle"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Kf6-PU-zqc" firstAttribute="leading" secondItem="9ho-WL-KiC" secondAttribute="trailing" constant="55" id="18T-wV-H2j"/>
-                <constraint firstAttribute="bottom" secondItem="Kf6-PU-zqc" secondAttribute="bottom" constant="12" id="5Jz-Ss-gQP"/>
-                <constraint firstAttribute="trailing" secondItem="Kf6-PU-zqc" secondAttribute="trailing" constant="15" id="9ci-gp-mKy"/>
-                <constraint firstItem="9ho-WL-KiC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="ECP-lY-JEH"/>
-                <constraint firstAttribute="bottom" secondItem="9ho-WL-KiC" secondAttribute="bottom" constant="12" id="KVC-GA-fMs"/>
-                <constraint firstItem="xn5-Dw-MwR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="cNp-KS-VmU"/>
-                <constraint firstAttribute="bottom" secondItem="xn5-Dw-MwR" secondAttribute="bottom" constant="12" id="jkk-z1-isQ"/>
-                <constraint firstItem="9ho-WL-KiC" firstAttribute="leading" secondItem="xn5-Dw-MwR" secondAttribute="trailing" constant="70" id="l5a-O5-0LR"/>
-                <constraint firstItem="Kf6-PU-zqc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="r2G-pw-3Kn"/>
-                <constraint firstItem="xn5-Dw-MwR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="13" id="tD0-6l-VFP"/>
+                <constraint firstItem="Kf6-PU-zqc" firstAttribute="leading" secondItem="9ho-WL-KiC" secondAttribute="trailing" constant="25" id="18T-wV-H2j"/>
+                <constraint firstAttribute="bottom" secondItem="Kf6-PU-zqc" secondAttribute="bottom" id="5Jz-Ss-gQP"/>
+                <constraint firstAttribute="trailing" secondItem="Kf6-PU-zqc" secondAttribute="trailing" constant="8" id="9ci-gp-mKy"/>
+                <constraint firstItem="9ho-WL-KiC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="ECP-lY-JEH"/>
+                <constraint firstAttribute="bottom" secondItem="9ho-WL-KiC" secondAttribute="bottom" constant="6" id="KVC-GA-fMs"/>
+                <constraint firstItem="xn5-Dw-MwR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cNp-KS-VmU"/>
+                <constraint firstAttribute="bottom" secondItem="xn5-Dw-MwR" secondAttribute="bottom" id="jkk-z1-isQ"/>
+                <constraint firstItem="9ho-WL-KiC" firstAttribute="leading" secondItem="xn5-Dw-MwR" secondAttribute="trailing" constant="47" id="l5a-O5-0LR"/>
+                <constraint firstItem="Kf6-PU-zqc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="r2G-pw-3Kn"/>
+                <constraint firstItem="xn5-Dw-MwR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tD0-6l-VFP"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -49,7 +49,7 @@
                 <outlet property="middleButton" destination="9ho-WL-KiC" id="K2o-Yr-8yG"/>
                 <outlet property="rightButton" destination="Kf6-PU-zqc" id="X3V-p0-H3l"/>
             </connections>
-            <point key="canvasLocation" x="252.5" y="697.5"/>
+            <point key="canvasLocation" x="252.5" y="690.5"/>
         </view>
     </objects>
 </document>

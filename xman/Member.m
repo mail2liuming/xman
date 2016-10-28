@@ -7,6 +7,7 @@
 //
 
 #import "Member.h"
+#import "PhotoWrapper.h"
 
 @implementation Member
 
@@ -56,7 +57,7 @@ NSString *const MemberFieldOptions=@"options";
         self.size = member[MemberFieldSize];
         self.phonenum = member[MemeberFieldPhonenum];
         self.allowsms = member[MemeberFieldAllowsms];
-        self.pics = member[MemberFieldPics];
+        self.pics = [PhotoWrapper fromUrlArray:  member[MemberFieldPics]];
         self.options = member[MemberFieldOptions];
     }
     return self;
@@ -76,12 +77,12 @@ NSString *const MemberFieldOptions=@"options";
     member[MemberFieldSize]=self.size ;
     member[MemeberFieldPhonenum]=self.phonenum ;
     member[MemeberFieldAllowsms]=self.allowsms;
-    member[MemberFieldPics]=self.pics;
+    member[MemberFieldPics]=[PhotoWrapper toUrlArray:self.pics];
     member[MemberFieldOptions]=self.options ;
     
-    girl[self.uid]=member;
+//    girl[self.uid]=member;
     
-    return girl;
+    return member;
 }
 
 

@@ -17,6 +17,7 @@
 
 @property NSMutableArray* options;
 @property NSMutableArray* optionViews;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -29,7 +30,7 @@ static const int MAX_OPTIONS_SHOWN=3;
 -(void)viewDidLoad{
     self.options = [[NSMutableArray alloc]init];
     self.optionViews= [[NSMutableArray alloc]init];
-    
+    self.scrollView = self.scrollview;
     
     [super viewDidLoad];
     [self.pageDelegate onShow:self.pageIndex title:@"options"];
@@ -93,10 +94,11 @@ static const int MAX_OPTIONS_SHOWN=3;
     
     for(int i=0;i<count;i++){
         NSString* option = self.options[i+offset];
-        UILabel* optionView = [[UILabel alloc]initWithFrame:CGRectMake(0, (i+3)*25, 200, 20)];
+        UILabel* optionView = [[UILabel alloc]initWithFrame:CGRectMake(10, (i+3)*15, 400, 15)];
+        [optionView setFont:[UIFont systemFontOfSize:13]];
         [optionView setText:option];
         [self.optionViews addObject:optionView];
-        [self.view addSubview:optionView];
+        [self.contentView addSubview:optionView];
     }
 }
 

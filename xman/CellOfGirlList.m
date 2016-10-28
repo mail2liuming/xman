@@ -7,6 +7,8 @@
 //
 
 #import "CellOfGirlList.h"
+#import "PhotoWrapper.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @implementation CellOfGirlList
@@ -21,6 +23,12 @@
 
 -(void)attachMemberInfo:(Member *)member{
     [self.name setText:member.name];
+    if (member.pics !=nil){
+        if(member.pics.count > 0){
+            PhotoWrapper* url = member.pics[0];
+            [self.icon setImageWithURL:[NSURL URLWithString:url.showImageUrl]];
+        }
+    }
 }
 
 @end

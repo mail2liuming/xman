@@ -36,9 +36,13 @@
     NSString* id = [self.appDelegate getUserID];
     self.refHandle = [[[self.ref child:id] child:@"members"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         self.girls = [[NSMutableArray alloc]init];
-        for(NSString*key in snapshot.value){
-            [self.girls addObject:[[Member alloc]initFromDictionary:snapshot.value[key] withUid:key]];
+        NSDictionary* data = snapshot.value;
+        if(data && ![data isMemberOfClass:[NSNull class]]){
+            for(NSString*key in data){
+                [self.girls addObject:[[Member alloc]initFromDictionary:snapshot.value[key] withUid:key]];
+            }
         }
+        
 //        NSObject *o = snapshot.value;
 //        if([o isMemberOfClass:[NSArray class]]){
 //            self.girls = snapshot.value;
@@ -52,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
+    self.girls = [[NSMutableArray alloc]init];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -88,7 +92,7 @@
 //    if([self.girls isMemberOfClass:[NSMutableArray class]]){
 //        return [self.girls count];
 //    }
-//    return 0;
+//    return 0; 
     return [self.girls count];
 }
 

@@ -40,6 +40,7 @@
     
     self.imageUrlList = [[NSMutableArray alloc]init];
     [self.imageUrlList addObjectsFromArray:self.member.pics];
+    
 }
 
 
@@ -129,34 +130,59 @@
     [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         PHAsset *asset = obj;
         
+        PHImageManager * phManager = [PHImageManager defaultManager];
+        [phManager requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+//            NSURL *imageFile = contentEditingInput.fullSizeImageURL;
+            NSString *filePath = [NSString stringWithFormat:@"%@/%lld",
+                                  [FIRAuth auth].currentUser.uid,
+                                  (long long)([[NSDate date] timeIntervalSince1970] * 1000.0)];
+            [self.view addSubview:spinner];
+            [[_storageRef child:filePath]
+             putData:imageData metadata:nil
+             completion:^(FIRStorageMetadata *metadata, NSError *error) {
+                 if (error) {
+                     NSLog(@"Error uploading: %@", error);
+                     return;
+                 }
+                 PhotoWrapper *wrapper = [[PhotoWrapper alloc]init];
+                 wrapper.index = self.imageUrlList.count;
+                 wrapper.imageUrl =metadata.downloadURL.absoluteString;
+//                 wrapper.localImageUrl = imageFile.absoluteString;
+                 NSLog(@"add new index %d",wrapper.index);
+                 [self.imageUrlList addObject:wrapper];
+                 [self.collectionView reloadData];
+                 [spinner removeFromSuperview];
+             }
+             ];
         
-        [asset requestContentEditingInputWithOptions:nil
-                                   completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
-                                       NSURL *imageFile = contentEditingInput.fullSizeImageURL;
-                                       NSString *filePath = [NSString stringWithFormat:@"%@/%lld",
-                                                             [FIRAuth auth].currentUser.uid,
-                                                             (long long)([[NSDate date] timeIntervalSince1970] * 1000.0)];
-                                       [self.view addSubview:spinner];
-                                       [[_storageRef child:filePath]
-                                        putFile:imageFile metadata:nil
-                                        completion:^(FIRStorageMetadata *metadata, NSError *error) {
-                                            if (error) {
-                                                NSLog(@"Error uploading: %@", error);
-                                                return;
-                                            }
-                                            PhotoWrapper *wrapper = [[PhotoWrapper alloc]init];
-                                            wrapper.index = self.imageUrlList.count;
-                                            wrapper.imageUrl =metadata.downloadURL.absoluteString;
-                                            NSLog(@"add new index %d",wrapper.index);
-                                            [self.imageUrlList addObject:wrapper];
-                                            [self.collectionView reloadData];
-                                            [spinner removeFromSuperview];
-                                        }
-                                        ];
-                                   }];
-        
+        }];
+//        [asset requestContentEditingInputWithOptions:nil
+//                                   completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+//                                       NSURL *imageFile = contentEditingInput.fullSizeImageURL;
+//                                       NSString *filePath = [NSString stringWithFormat:@"%@/%lld",
+//                                                             [FIRAuth auth].currentUser.uid,
+//                                                             (long long)([[NSDate date] timeIntervalSince1970] * 1000.0)];
+//                                       [self.view addSubview:spinner];
+//                                       [[_storageRef child:filePath]
+//                                        putFile:imageFile metadata:nil
+//                                        completion:^(FIRStorageMetadata *metadata, NSError *error) {
+//                                            if (error) {
+//                                                NSLog(@"Error uploading: %@", error);
+//                                                return;
+//                                            }
+//                                            PhotoWrapper *wrapper = [[PhotoWrapper alloc]init];
+//                                            wrapper.index = self.imageUrlList.count;
+//                                            wrapper.imageUrl =metadata.downloadURL.absoluteString;
+//                                            wrapper.localImageUrl = imageFile.absoluteString;
+//                                            NSLog(@"add new index %d",wrapper.index);
+//                                            [self.imageUrlList addObject:wrapper];
+//                                            [self.collectionView reloadData];
+//                                            [spinner removeFromSuperview];
+//                                        }
+//                                        ];
+//                                   }];
+    
     }];
-//    [self.collectionView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     
 }
 

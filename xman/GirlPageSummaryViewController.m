@@ -8,11 +8,12 @@
 
 #import "GirlPageSummaryViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "PhotoWrapper.h"
 @import Firebase;
 
 #define PAGEINDEX_BIO 0
 #define PAGEINDEX_CONTACT 7
-#define PAGEINDEX_SERVICE 10
+#define PAGEINDEX_SERVICE 9
 #define PAGEINDEX_PICS  11
 
 
@@ -56,28 +57,34 @@
 -(void)attachInfo{
     //TODO
     NSMutableArray *array = [[NSMutableArray alloc]init];
-    [array addObject:@"**Bio**\n"];
+    [array addObject:@"--Bio--\n"];
+    [array addObject:@"Work name:"];
     [array addObject:self.member.name];
-    [array addObject:@"(What would you like client to call you?)"];
     [array addObject:@"\n"];
+    [array addObject:@"Birth:"];
     [array addObject:self.member.birthday];
-    [array addObject:@"(This is to display your age)\n"];
+    [array addObject:@"\n"];
+    [array addObject:@"Size:"];
     [array addObject:self.member.size];
     [array addObject:@"\n"];
+    [array addObject:@"Height:"];
     [array addObject:self.member.height];
     [array addObject:@"(cm)\n"];
+    [array addObject:@"Weight:"];
     [array addObject:self.member.weight];
     [array addObject:@"(kg)\n"];
+    [array addObject:@"Eyes:"];
     [array addObject:self.member.eyecolor];
-    [array addObject:@"(Eyes color)\n"];
+    [array addObject:@"\n"];
+    [array addObject:@"Hair:"];
     [array addObject:self.member.haircolor];
-    [array addObject:@"(Hair color)\n"];
+    [array addObject:@"\n"];
     
     NSString *str = [array componentsJoinedByString:@""];
     [self.bioLabel setText:str];
     
     [array removeAllObjects];
-    [array addObject:@"Contact Details\n"];
+    [array addObject:@"--Contact Details--\n"];
     [array addObject:@"Mobile:"];
     [array addObject:self.member.phonenum];
     [array addObject:@"\n"];
@@ -89,7 +96,7 @@
     [self.contactLabel setText:str];
     
     [array removeAllObjects];
-    [array addObject:@"Service and Fees\n"];
+    [array addObject:@"--Service and Fees--\n"];
     for (NSString* s in self.member.options){
         [array addObject:s];
         [array addObject:@"\n"];
@@ -100,21 +107,26 @@
     
     if(self.member.pics != nil){
         int count = [self.member.pics count];
-        
+        PhotoWrapper* wrapper = nil;
         if(count >0){
-            [self.imageview setImageWithURL:[NSURL URLWithString:self.member.pics[0]]];
+            wrapper =self.member.pics[0];
+            [self.imageview setImageWithURL:[NSURL URLWithString:wrapper.showImageUrl]];
         }
         if(count >1){
-            [self.imageview2 setImageWithURL:[NSURL URLWithString:self.member.pics[1]]];
+            wrapper =self.member.pics[1];
+            [self.imageview2 setImageWithURL:[NSURL URLWithString:wrapper.showImageUrl]];
         }
         if(count >2){
-            [self.imageview3 setImageWithURL:[NSURL URLWithString:self.member.pics[2]]];
+            wrapper =self.member.pics[2];
+            [self.imageview3 setImageWithURL:[NSURL URLWithString:wrapper.showImageUrl]];
         }
         if(count >3){
-            [self.imageview4 setImageWithURL:[NSURL URLWithString:self.member.pics[3]]];
+            wrapper =self.member.pics[3];
+            [self.imageview4 setImageWithURL:[NSURL URLWithString:wrapper.showImageUrl]];
         }
         if(count >4){
-            [self.imageview5 setImageWithURL:[NSURL URLWithString:self.member.pics[4]]];
+            wrapper =self.member.pics[4];
+            [self.imageview5 setImageWithURL:[NSURL URLWithString:wrapper.showImageUrl]];
         }
     }
 }
